@@ -1,6 +1,7 @@
 package co.edu.umanizales.tads.controller;
 
 import co.edu.umanizales.tads.controller.dto.KidDTO;
+import co.edu.umanizales.tads.controller.dto.KidGenderDTO;
 import co.edu.umanizales.tads.controller.dto.KidsByLocationDTO;
 import co.edu.umanizales.tads.controller.dto.ResponseDTO;
 import co.edu.umanizales.tads.model.Kid;
@@ -10,11 +11,8 @@ import co.edu.umanizales.tads.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +58,7 @@ public class ListSEController {
        listSEService.getKids().add(
                new Kid(kidDTO.getIdentification(),
                        kidDTO.getName(), kidDTO.getAge(),
-                       kidDTO.getGender(), location));
+                       kidDTO.getGenderKid(),location));
         return new ResponseEntity<>(new ResponseDTO(
                 200,"Se ha adicionado el petacón",
                 null), HttpStatus.OK);
@@ -91,6 +89,19 @@ public class ListSEController {
             }
         }
         return new ResponseEntity<>(new ResponseDTO(200,KidsByLocationDTOList1,null),HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/kidsbyage")
+    public ResponseEntity<ResponseDTO>getKidsByGenreCity(@PathVariable byte age){
+        List<ResponseDTO> responseDTOList = new ArrayList<>();
+        for (Location loc:locationService.getLocations()){
+            if (loc.getCode().length()==8){
+                String nameCity = loc.getName();
+                List<KidDTO> kidDTOList = new ArrayList<>();
+
+                kidDTOList.add(new KidDTO())
+            }
+        }
     }
 
 

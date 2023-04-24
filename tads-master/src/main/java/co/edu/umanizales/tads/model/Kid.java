@@ -12,4 +12,5 @@ public class Kid {
     private byte age;
     private char gender;
     private Location location;
+    private GenderKid genderKid;
 }

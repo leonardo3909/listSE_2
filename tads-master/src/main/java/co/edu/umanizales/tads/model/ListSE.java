@@ -137,6 +137,25 @@ public class ListSE {
         return count;
     }
 
+    public int getKidsByGenreCity(int age,String code,String codeGender){
+        int count = 0;
+        if (this.head != null){
+            Node temp = this.head;
+            while (temp != null){
+                if (temp.getData().getLocation().getCode().equals(code) && temp.getData().getGenderKid().getCode().equals(codeGender)){
+                    if (temp.getData().getAge()> age){
+                        count++;
+                    }
+
+                }
+            }
+            temp = temp.getNext();
+        }
+        return count;
+    }
+
+
+
 
 
 }
